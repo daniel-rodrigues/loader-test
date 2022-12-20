@@ -8,7 +8,6 @@ public class BreedImage
         ExternalId = externalId;
     }
 
-    public Guid Id { get; set; }
     public string URL { get; set; }
     public string ExternalId { get; set; }
 }

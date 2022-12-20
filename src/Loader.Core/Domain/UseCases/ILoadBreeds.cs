@@ -2,7 +2,7 @@
 
 namespace Loader.Core.Domain.UseCases;
 
-public interface IAddBreed
+public interface ILoadBreeds
 {
-    Task<bool> Add(Breed breed);
+    Task<bool> Import(IEnumerable<Breed> breeds);
 }

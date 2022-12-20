@@ -15,7 +15,7 @@ public class Breed
     public string Origin { get; set; }
     public string Temperament { get; set; }
     public string ExternalId { get; set; }
-    public IEnumerable<BreedImage> Images { get; set; }
+    public IEnumerable<BreedImage> Images { get; set; } = new List<BreedImage>();
 
     public void AddImages(IEnumerable<BreedImage> images)
     {
