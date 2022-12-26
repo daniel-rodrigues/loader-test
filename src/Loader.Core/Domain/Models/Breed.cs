@@ -1,6 +1,6 @@
 ﻿namespace Loader.Core.Domain.Models;
 
-public class Breed
+public class Breed : Entity<Guid>
 {
     public Breed(string description, string origin, string temperament, string externalId)
     {
@@ -10,7 +10,6 @@ public class Breed
         ExternalId = externalId;
     }
 
-    public Guid Id { get; set; }
     public string Description { get; set; }
     public string Origin { get; set; }
     public string Temperament { get; set; }
