@@ -5,7 +5,7 @@ namespace Loader.Core.Infrastructure.Exceptions;
 public class EntityNotFoundException : BusinessException
 {
     public Type EntityType { get; set; }
-    public object Id { get; set; }
+    public object? Id { get; set; }
 
     public EntityNotFoundException(Type entityType) : this(entityType, null, null, null)
     {

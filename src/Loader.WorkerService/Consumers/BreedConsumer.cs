@@ -6,13 +6,13 @@ namespace Loader.WorkerService.Consumers
     public class BreedConsumer : IBreedConsumer
     {
         private readonly IConsumerConfiguration _consumerConfiguration;
-
+        private readonly ILoadBreeds _loadBreeds;
         public BreedConsumer(IConsumerConfiguration consumerConfiguration)
         {
             _consumerConfiguration = consumerConfiguration;
         }
 
-        public Task<IEnumerable<Breed>> GetData()
+        public Task GetData()
         {
             throw new NotImplementedException();
         }
