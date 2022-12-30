@@ -21,6 +21,7 @@ public class BreedConsumer : IBreedConsumer
     public async Task Consume()
     {
         var breeds = await GetBreedsAsync();
+        breeds = breeds.Select(breed => GetBreedImages(breed).Result);
 
         if (breeds == null || !breeds.Any())
         {
@@ -33,14 +34,29 @@ public class BreedConsumer : IBreedConsumer
 
     private async Task<IEnumerable<BreedDto>> GetBreedsAsync()
     {
+        return await Request<BreedDto>($"{_consumerConfiguration.URL}/breeds?limit=100");
+    }
+
+    private async Task<BreedDto> GetBreedImages(BreedDto breedDto)
+    {
+        var images = await Request<BreedImageDto>($"{_consumerConfiguration.URL}/images/search?format=json&limit=3&breed_ids={breedDto.Id}");
+
+        if(images != null && images.Count() > 0)
+            breedDto.AddImages(images); 
+
+        return breedDto;
+    }
+
+    private async Task<IEnumerable<T>> Request<T>(string url) where T : class
+    {
         var request = new HttpRequestMessage(
             HttpMethod.Get,
-            $"{_consumerConfiguration.URL}/breeds?limit=100");
+            url);
 
         using var response = await _client.SendAsync(request);
         var stringJson = await response.Content.ReadAsStringAsync();
-        IEnumerable<BreedDto> breeds = JsonConvert.DeserializeObject<IEnumerable<BreedDto>>(stringJson);
-        return breeds;
+        IEnumerable<T> data = JsonConvert.DeserializeObject<IEnumerable<T>>(stringJson);
+        return data;
     }
 }
 
