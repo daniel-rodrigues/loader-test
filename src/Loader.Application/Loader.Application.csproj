@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Breeds\" />
+    <None Remove="Breeds\Dto\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Breeds\" />
+    <Folder Include="Breeds\Dto\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Loader.Core\Loader.Core.csproj" />
+  </ItemGroup>
+</Project>
