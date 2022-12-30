@@ -2,7 +2,7 @@
 
 namespace Loader.Core.Infrastructure.MongoDb;
 
-public class MongoDbConfiguration
+public class MongoDbConfiguration : IMongoDbConfiguration
 {
     private IConfiguration _configuration;
 

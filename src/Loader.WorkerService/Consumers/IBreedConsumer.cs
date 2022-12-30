@@ -1,9 +1,9 @@
 ﻿using Loader.Core.Domain.Models;
 using Loader.Core.Domain.UseCases;
 
-namespace Loader.WorkerService.Consumers
+namespace Loader.WorkerService.Consumers;
+
+public interface IBreedConsumer
 {
-    public interface IBreedConsumer : IConsumer<Breed>
-    {
-    }
+    Task Consume();
 }
