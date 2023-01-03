@@ -10,4 +10,9 @@ public class BreedImage
 
     public string URL { get; set; }
     public string ExternalId { get; set; }
+
+    public override string ToString()
+    {
+        return $"ExternalId: {ExternalId}";
+    }
 }

@@ -2,6 +2,15 @@
 
 public class Breed : Entity<Guid>
 {
+    public Breed()
+    {
+        Id = Guid.Empty;
+        Description = string.Empty;
+        Origin = string.Empty;
+        Temperament = string.Empty;
+        ExternalId = string.Empty;
+    }
+
     public Breed(string description, string origin, string temperament, string externalId)
     {
         Description = description;
@@ -19,5 +28,10 @@ public class Breed : Entity<Guid>
     public void AddImages(IEnumerable<BreedImage> images)
     {
         Images = images;
+    }
+
+    public override string ToString()
+    {
+        return $"ExternalId: {ExternalId} - Images: {Images.Count()}";
     }
 }

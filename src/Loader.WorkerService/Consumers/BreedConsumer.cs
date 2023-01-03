@@ -10,6 +10,8 @@ public class BreedConsumer : IBreedConsumer
     private readonly IBreedAppService _breedAppService;
     private readonly ILogger<BreedConsumer> _logger;
     private readonly HttpClient _client;
+    private const int MAX_LIMIT_IMAGES = 3;
+
     public BreedConsumer(IConsumerConfiguration consumerConfiguration, IBreedAppService breedAppService, ILogger<BreedConsumer> logger)
     {
         _consumerConfiguration = consumerConfiguration;
@@ -41,8 +43,8 @@ public class BreedConsumer : IBreedConsumer
     {
         var images = await Request<BreedImageDto>($"{_consumerConfiguration.URL}/images/search?format=json&limit=3&breed_ids={breedDto.Id}");
 
-        if(images != null && images.Count() > 0)
-            breedDto.AddImages(images); 
+        if (images != null && images.Any())
+            breedDto.AddImages(images.Take(MAX_LIMIT_IMAGES));
 
         return breedDto;
     }

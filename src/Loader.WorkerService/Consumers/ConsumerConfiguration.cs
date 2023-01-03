@@ -17,16 +17,16 @@ public class ConsumerConfiguration : IConsumerConfiguration
 
     private string GetUrl()
     {
-        return _configuration.GetSection("DataSource:BaseURL").Value;
+        return _configuration.GetSection("DataSource:BaseURL")?.Value ?? string.Empty;
     }
 
     private string GetToken()
     {
-        return _configuration.GetSection("DataSource:Token").Value;
+        return _configuration.GetSection("DataSource:Token")?.Value ?? string.Empty;
     }
 
     private string GetHeader()
     {
-        return _configuration.GetSection("DataSource:Header").Value;
+        return _configuration.GetSection("DataSource:Header")?.Value ?? string.Empty;
     }
 }

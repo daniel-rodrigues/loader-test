@@ -13,11 +13,11 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddSingleton<IConsumerConfiguration, ConsumerConfiguration>();
         services.AddSingleton<IBreedConsumer, BreedConsumer>();
         services.AddSingleton<IBreedAppService, BreedAppService>();
+        services.AddSingleton<IBreedMapper, BreedMapper>();
         services.AddSingleton<ILoadBreeds, LoadBreeds>();
         services.AddSingleton<IBreedRepository, BreedRepository>();
         services.AddSingleton<IMongoDbConfiguration, MongoDbConfiguration>();
         services.AddSingleton<MongoDbContextProvider>();
-        
     })
     .Build();
 

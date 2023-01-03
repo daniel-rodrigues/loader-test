@@ -2,6 +2,14 @@
 
 public class BreedDto
 {
+    public BreedDto()
+    {
+        Id = string.Empty;
+        Description = string.Empty;
+        Origin = string.Empty;
+        Temperament = string.Empty;
+    }
+
     public BreedDto(string id, string description, string origin, string temperament)
     {
         Id = id;
@@ -21,5 +29,9 @@ public class BreedDto
         Images = images;
     }
 
+    public override string ToString()
+    {
+        return $"Id: {Id} - Images: {Images.Count()}";
+    }
 }
 
